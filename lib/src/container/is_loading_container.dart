@@ -7,13 +7,13 @@ import 'package:redux/redux.dart';
 class IsLoadingContainer extends StatelessWidget {
   const IsLoadingContainer({Key? key, required this.builder}) : super(key: key);
 
-  final ViewModelBuilder<bool> builder;
+  final ViewModelBuilder<AppState> builder;
 
   @override
   Widget build(BuildContext context) {
-    return StoreConnector<AppState, bool>(
+    return StoreConnector<AppState, AppState>(
       converter: (Store<AppState> store) {
-        return store.state.isLoading;
+        return store.state;
       },
       builder: builder,
     );

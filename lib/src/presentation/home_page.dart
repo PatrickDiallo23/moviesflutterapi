@@ -15,6 +15,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final ScrollController _controller = ScrollController();
+  AppState stateOfApp = AppState();
 
   @override
   void initState() {
@@ -62,8 +63,8 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         actions: <Widget>[
           IsLoadingContainer(
-            builder: (BuildContext context, bool isLoading) {
-              if (!isLoading) {
+            builder: (BuildContext context, AppState state) {
+              if (!state.isLoading) {
                 return const SizedBox.shrink();
               }
 
@@ -74,18 +75,24 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
-      body: TitlesContainer(
-        builder: (BuildContext context, List<String> titles) {
-          return ListView.builder(
-            controller: _controller,
-            itemCount: titles.length,
-            itemBuilder: (BuildContext context, int index) {
-              final String title = titles[index];
+      body: IsLoadingContainer(
+        builder: (BuildContext context, AppState state) {
+          if (state.isLoading == false) {
+            return ListView.builder(
+              controller: _controller,
+              itemCount: state.titles.length,
+              itemBuilder: (BuildContext context, int index) {
+                final String title = state.titles[index];
 
-              return ListTile(
-                title: Text(title),
-              );
-            },
+                return ListTile(
+                  title: Text(title),
+                );
+              },
+            );
+          }
+
+          return const Center(
+            child: CircularProgressIndicator(),
           );
         },
       ),
