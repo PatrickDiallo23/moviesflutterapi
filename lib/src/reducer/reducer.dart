@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:moviesflutter/src/actions/get_movies.dart';
 import 'package:moviesflutter/src/models/app_state.dart';
 import 'package:redux/redux.dart';

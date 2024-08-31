@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:moviesflutter/src/actions/get_movies.dart';
 import 'package:moviesflutter/src/container/is_loading_container.dart';
-import 'package:moviesflutter/src/container/titles_container.dart';
 import 'package:moviesflutter/src/models/app_state.dart';
 import 'package:redux/redux.dart';
 
